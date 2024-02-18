@@ -77,7 +77,7 @@ const Goal: FC = () => {
                                onChange={update.checkbox_added_to_do}/>
                         <label className={cn('cursor-pointer',
                             {'line-through': goal.checkbox_added_to_do}
-                        )} htmlFor={id5}>Added to do list</label>
+                        )} htmlFor={id5}>Add to do list</label>
                     </p>
                     <p className='flex gap-2 items-center opacity-80'>
                         <input className='cursor-pointer' id={id6} type='checkbox'

@@ -32,9 +32,9 @@ const Layout: FC = () => {
     }, [project, projects, navigation])
 
     return <div className='min-h-screen'>
-        <Card className='border-gray-200 pb-4 pt-6 mb-1'>
+        <Card className='border-gray-200 pb-4 pt-6 mb-1 mx-auto m-auto'>
             <menu
-                className='flex gap-4 justify-center overflow-x-auto top-0 left-0 right-0 z-10 mx-w-full w-fit mx-auto m-auto items-start'>
+                className='flex gap-4 justify-center overflow-x-auto top-0 left-0 right-0 z-10 w-fit max-w-full items-start'>
                 {projects?.map(p => (
                     <li key={p.name}
                         className={(cn('text-center flex pb-2 items-center justify-center border-b-2 ', {

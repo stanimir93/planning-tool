@@ -45,10 +45,10 @@ const Project: FC = () => {
                     </div>
                 </div>
             </Card>
-            <nav className='flex items-center gap-5 overflow-visible'>
+            <nav className='flex items-center gap-5 overflow-visible w-full overflow-x-auto max-w-full'>
                 {project.goals.map((o, i) => (
                     <Card key={i}
-                          className={cn('flex flex-1 items-center flex-col gap-1', isActive(o.name) ?
+                          className={cn('flex flex-1 items-center flex-col gap-1 min-h-40', isActive(o.name) ?
                               ''
                               : 'bg-gray-100 text-gray-500 opacity-40')}
                           onClick={() => navigation(`/${encodeURI(project.name)}/${encodeURI(o.name)}`)}
