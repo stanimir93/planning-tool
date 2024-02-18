@@ -138,10 +138,12 @@ const Description: FC<DescriptionInputProps> = ({g, p}) => {
         setDescription(g?.description || '')
     }, [g?.name, p.name]);
 
-    return current?.name === g.name ? <div className='w-full border rounded dark:border-zinc-800'>
-        <ReactQuill className='w-full'
+    return  <div className='w-full border rounded dark:border-zinc-800'>
+        <ReactQuill className={cn('w-full', {
+            'cursor-default': g.name !== current?.name
+        })}
                     theme="bubble" value={description} onChange={e => setDescription(e)}
                     onBlur={handleDescriptionBlur}/>
-    </div> : <div className='p-2 w-full border d-flex flex-col items-stretch rounded dark:border-zinc-800 h-[46px]' dangerouslySetInnerHTML={{__html: g.description}}/>
+    </div>
 
 }
