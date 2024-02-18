@@ -54,27 +54,14 @@ const Layout: FC = () => {
                 </li>
             </menu>
         </Card>
-        <main className='flex flex-col items-stretch gap-5 max-w-5xl mx-auto px-4 py-5  min-h-screen'>
+        <main className='flex flex-col items-stretch gap-5 max-w-5xl mx-auto px-4 py-5 min-h-screen'>
             <Outlet/>
         </main>
-        <footer className='flex gap-4 justify-center pb-4'>
-
-            <button onClick={() => {
-                if (window.confirm('Are you sure you want to remove this project')) {
-                    project?.name && remove.project(project.name)
-                }
-
-            }}
-                    className='text-red-400 text-sm border-2 border-red-400 rounded-full px-2 py-1 hover:bg-red-400 hover:text-white'>
-                Delete Current Project
-            </button>
-            <button onClick={() => {
-                if (window.confirm('Are you sure you want to clear all projects?')) {
-                    remove.all_projects()
-                }
-            }}
-                    className='text-red-400 text-sm border-2 border-red-400 rounded-full px-2 py-1 hover:bg-red-400 hover:text-white'>
-                Delete All Projects
+        <footer className='flex gap-4 items-stretch mx-auto justify-center pb-4 flex-col sm:flex-row max-w-48 sm:max-w-full'>
+            <button
+                onClick={() => create.goal(new DemoGoal(`Goal (${Number(project?.goals?.length) + 1})`))}
+                className='text-blue-400 text-sm border-2 border-blue-400 rounded-full px-2 py-1 hover:bg-blue-400 hover:text-white text-nowrap'>
+                Add Goal
             </button>
 
             <button onClick={() => {
@@ -93,10 +80,23 @@ const Layout: FC = () => {
                     className='text-orange-400 text-sm border-2 border-orange-400 rounded-full px-2 py-1 hover:bg-orange-400 hover:text-white'>
                 Delete All Goals
             </button>
-            <button
-                onClick={() => create.goal(new DemoGoal(`Goal (${Number(project?.goals?.length) + 1})`))}
-                className='text-blue-400 text-sm border-2 border-blue-400 rounded-full px-2 py-1 hover:bg-blue-400 hover:text-white text-nowrap'>
-                Add Goal
+
+            <button onClick={() => {
+                if (window.confirm('Are you sure you want to remove this project')) {
+                    project?.name && remove.project(project.name)
+                }
+
+            }}
+                    className='text-red-400 text-sm border-2 border-red-400 rounded-full px-2 py-1 hover:bg-red-400 hover:text-white'>
+                Delete Current Project
+            </button>
+            <button onClick={() => {
+                if (window.confirm('Are you sure you want to clear all projects?')) {
+                    remove.all_projects()
+                }
+            }}
+                    className='text-red-400 text-sm border-2 border-red-400 rounded-full px-2 py-1 hover:bg-red-400 hover:text-white'>
+                Delete All Projects
             </button>
         </footer>
     </div>
