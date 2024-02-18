@@ -19,7 +19,7 @@ const Project: FC = () => {
     useEffect(() => {
         if (!project) return
         if (!goal) {
-            const fistObjective = project.goals[0]
+            const fistObjective = project?.goals[0]
             if (fistObjective) {
                 navigation(`/${encodeURI(project.name)}/${encodeURI(fistObjective.name)}`, {replace: true})
             }
@@ -35,7 +35,9 @@ const Project: FC = () => {
     return (<>
             <Card className='flex flex-col items-start gap-1'>
                 <div className='w-full'>
-                    <p className='block pl-2 mb-4 text-lg font-semibold'>Main objectives?</p>
+                    <p className='block pl-2 mb-4 text-lg font-semibold'>
+
+                        Main objectives?</p>
                     <div className='w-full border rounded'>
                         <ReactQuill className='w-full'
                                     theme="bubble" value={mainObjective} onChange={e => setMainObjective(e)}

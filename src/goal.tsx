@@ -4,7 +4,6 @@ import Card from "./card.tsx";
 import cn from "classnames";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.bubble.css';
-import {RiTodoLine} from "react-icons/ri";
 
 
 const Goal: FC = () => {
@@ -27,7 +26,7 @@ const Goal: FC = () => {
 
     return (<>
             <Card className='flex flex-col items-start gap-4 border'>
-                <label className='flex gap-2 items-center pl-2 text-lg font-semibold'><RiTodoLine/> What tasks I need to
+                <label className='flex gap-2 items-center pl-2 text-lg font-semibold'>What tasks I need to
                     do?</label>
                 <div className='w-full border rounded'>
                     <ReactQuill className='w-full taller'
@@ -36,7 +35,8 @@ const Goal: FC = () => {
                 </div>
             </Card>
             <Card className='flex flex-col items-stretch gap-4 border'>
-                <p className='block pl-2 text-lg font-semibold'>How can I get this done fast?</p>
+                <p className='flex gap-2 items-center pl-2 text-lg font-semibold'>
+                    How can I get it done faster?</p>
 
 
                 <div className='mb-4'>

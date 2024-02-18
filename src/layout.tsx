@@ -19,14 +19,14 @@ const Layout: FC = () => {
     }
 
     const navigate = (name: string) => {
-        navigation(`/${encodeURI(name)}`)
+        navigation(`${encodeURI(name)}`)
     }
 
     useEffect(() => {
         if (!project) {
             const firstProject = projects[0]
             if (firstProject) {
-                navigation(`/${encodeURI(firstProject.name)}`)
+                navigation(`${encodeURI(firstProject.name)}`)
             }
         }
     }, [project, projects, navigation])
