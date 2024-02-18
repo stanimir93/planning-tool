@@ -35,7 +35,7 @@ input[type="checkbox"]::before {
     content: "";
     display: block;
     height: 0.4rem;
-    left: 0.29rem;
+    left: 0.30rem;
     position: absolute;
     top: 0.34rem;
     width: 0.63rem;
@@ -48,6 +48,14 @@ input[type="checkbox"]::before {
 
 input[type="checkbox"]:checked::before {
     opacity: 1;
+}
+
+.dark input[type="checkbox"]:checked {
+    background-color: #4a5568;
+}
+.dark input[type="checkbox"] {
+    background-color: #4a5568;
+    border-color: #4a5568;
 }
 
 /* No outline on input focus */

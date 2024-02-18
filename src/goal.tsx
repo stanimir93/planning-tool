@@ -28,7 +28,7 @@ const Goal: FC = () => {
             <Card className='flex flex-col items-start gap-4 border'>
                 <label className='flex gap-2 items-center pl-2 text-lg font-semibold'>What tasks I need to
                     do?</label>
-                <div className='w-full border rounded'>
+                <div className='w-full border rounded dark:border-zinc-800'>
                     <ReactQuill className='w-full taller'
                                 theme="bubble" value={actionableTasks} onChange={e => setActionableTasks(e)}
                                 onBlur={() => update.tasks(actionableTasks)}/>
@@ -40,28 +40,28 @@ const Goal: FC = () => {
 
 
                 <div className='mb-4'>
-                    <div className='w-full border rounded'>
+                    <div className='w-full border rounded dark:border-zinc-800'>
                         <ReactQuill className='w-full taller'
                                     theme="bubble" value={saveTimeNote} onChange={e => setSaveTimeNote(e)}
                                     onBlur={() => update.save_time_note(saveTimeNote)}/>
                     </div>
                 </div>
 
-                <p className='flex gap-2 items-center opacity-80'>
+                <p className='flex gap-2 items-center'>
                     <input className='cursor-pointer' id={id2} type='checkbox' checked={goal.checkbox_remove}
                            onChange={update.checkbox_remove}/>
                     <label className={cn('cursor-pointer',
                         {'line-through': goal.checkbox_remove}
                     )} htmlFor={id2}>Can I remove some tasks and still achieve the my goal?</label>
                 </p>
-                <p className='flex gap-2 items-center opacity-80'>
+                <p className='flex gap-2 items-center'>
                     <input className='cursor-pointer' id={id4} type='checkbox' checked={goal.checkbox_speed}
                            onChange={update.checkbox_speed}/>
                     <label className={cn('cursor-pointer',
                         {'line-through': goal.checkbox_speed}
                     )} htmlFor={id4}>How can I complete the tasks faster?</label>
                 </p>
-                <p className='flex gap-2 items-center opacity-80'>
+                <p className='flex gap-2 items-center'>
                     <input className='cursor-pointer' id={id3} type='checkbox' checked={goal.checkbox_avoid}
                            onChange={update.checkbox_avoid}/>
                     <label className={cn('cursor-pointer',
@@ -71,7 +71,7 @@ const Goal: FC = () => {
             </Card>
             <Card className='flex justify-between items-end gap-4 border'>
                 <section className='flex flex-col items-start gap-4'>
-                    <p className='flex gap-2 items-center opacity-80'>
+                    <p className='flex gap-2 items-center'>
                         <input className='cursor-pointer' id={id5} type='checkbox'
                                checked={goal.checkbox_added_to_do}
                                onChange={update.checkbox_added_to_do}/>
@@ -79,7 +79,7 @@ const Goal: FC = () => {
                             {'line-through': goal.checkbox_added_to_do}
                         )} htmlFor={id5}>Add to do list</label>
                     </p>
-                    <p className='flex gap-2 items-center opacity-80'>
+                    <p className='flex gap-2 items-center'>
                         <input className='cursor-pointer' id={id6} type='checkbox'
                                checked={goal.checkbox_schedules}
                                onChange={update.checkbox_schedules}/>
@@ -89,8 +89,11 @@ const Goal: FC = () => {
                     </p>
                 </section>
                 <button onClick={update.done}
-                        className={cn('px-4 py-2 rounded-md shadow-sm hover:shadow-md text-md font-semibold',
-                            goal.done ? 'bg-green-300' : 'bg-slate-300')}>{!goal.done ? 'Done' : 'Done'}</button>
+                        className={cn('px-4 py-2 rounded-md shadow-sm hover:shadow-md text-md font-semibold dark:text-white dark:opacity-80',
+                            goal.done ? 'bg-green-300 dark:bg-green-500' : 'bg-slate-300 : dark:bg-slate-500'
+                        )}>
+                    {goal.done ? 'Done' : 'Mark as done'}
+                </button>
             </Card>
         </>
     )

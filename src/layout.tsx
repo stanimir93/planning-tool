@@ -7,12 +7,22 @@ import {FiPlus} from "react-icons/fi";
 import {DemoGoal, DemoProject, IProject} from "./definitions.ts";
 import useGoal from "./hooks/useGoal.ts";
 import Card from "./card.tsx";
+import {useLocalStorage} from "@uidotdev/usehooks";
 
 const Layout: FC = () => {
     const projects = useProjects()
     const {project, create, remove, update} = useProject();
     const {goal} = useGoal();
     const navigation = useNavigate();
+    const [darkMode, setDarkMode] = useLocalStorage('darkMode', true)
+
+    useEffect(() => {
+        if (darkMode) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    }, [darkMode])
 
     const isActive = (projectName: string) => {
         return projectName === project?.name
@@ -31,10 +41,10 @@ const Layout: FC = () => {
         }
     }, [project, projects, navigation])
 
-    return <div className='min-h-screen'>
-        <Card className='border-gray-200 pb-4 pt-6 mb-1 mx-auto m-auto'>
+    return <div className='min-h-screen dark:text-gray-400 dark:bg-black'>
+        <Card className='pb-4 pt-6 mb-1 mx-auto m-auto'>
             <menu
-                className='flex gap-4 justify-center overflow-x-auto top-0 left-0 right-0 z-10 w-fit max-w-full items-start'>
+                className='flex gap-4 justify-center overflow-x-auto top-0 left-0 right-0 z-10 mx-auto w-fit max-w-full items-start'>
                 {projects?.map(p => (
                     <li key={p.name}
                         className={(cn('text-center flex pb-2 items-center justify-center border-b-2 ', {
@@ -57,7 +67,7 @@ const Layout: FC = () => {
         <main className='flex flex-col items-stretch gap-5 max-w-5xl mx-auto px-4 py-5 min-h-screen'>
             <Outlet/>
         </main>
-        <footer className='flex gap-4 items-stretch mx-auto justify-center pb-4 flex-col sm:flex-row max-w-48 sm:max-w-full'>
+        <footer className='flex gap-4 items-stretch mx-auto justify-center pb-4 flex-col sm:flex-row max-w-48 sm:max-w-full dark:opacity-80'>
             <button
                 onClick={() => create.goal(new DemoGoal(`Goal (${Number(project?.goals?.length) + 1})`))}
                 className='text-blue-400 text-sm border-2 border-blue-400 rounded-full px-2 py-1 hover:bg-blue-400 hover:text-white text-nowrap'>
@@ -98,6 +108,10 @@ const Layout: FC = () => {
                     className='text-red-400 text-sm border-2 border-red-400 rounded-full px-2 py-1 hover:bg-red-400 hover:text-white'>
                 Delete All Projects
             </button>
+            {/* dark mode /*/}
+            <button onClick={() => setDarkMode(!darkMode)}
+                    className='text-indigo-500 text-sm border-2 border-indigo-500 rounded-full px-2 py-1 hover:bg-indigo-500 hover:text-white text-nowrap'
+            >{darkMode ? 'Light' : 'Dark'} Mode</button>
         </footer>
     </div>
 }

@@ -8,7 +8,8 @@ type Props = {
 
 const Card: FC<PropsWithChildren<Props>> = (props) => {
 
-    return <section className={cn('shadow rounded-md border p-5 bg-slate-100', props.className)}
+    return <section className={cn('shadow rounded-md border p-5 bg-slate-100 dark:bg-zinc-900 dark:border-zinc-800'
+        , props.className)}
                     onClick={props.onClick}>
         {props.children}
     </section>

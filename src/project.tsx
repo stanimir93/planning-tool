@@ -38,7 +38,7 @@ const Project: FC = () => {
                     <p className='block pl-2 mb-4 text-lg font-semibold'>
 
                         Main objectives?</p>
-                    <div className='w-full border rounded'>
+                    <div className='w-full border rounded dark:border-zinc-800'>
                         <ReactQuill className='w-full'
                                     theme="bubble" value={mainObjective} onChange={e => setMainObjective(e)}
                                     onBlur={() => update.main_objective(mainObjective)}/>
@@ -50,7 +50,7 @@ const Project: FC = () => {
                     <Card key={i}
                           className={cn('flex flex-1 items-center flex-col gap-1 min-h-40', isActive(o.name) ?
                               ''
-                              : 'bg-gray-100 text-gray-500 opacity-40')}
+                              : 'bg-gray-100 text-gray-500 opacity-40 dark:opacity-60')}
                           onClick={() => navigation(`/${encodeURI(project.name)}/${encodeURI(o.name)}`)}
                     >
 
@@ -134,10 +134,10 @@ const Description: FC<DescriptionInputProps> = ({g, p}) => {
         setDescription(g?.description || '')
     }, [g?.name, p.name]);
 
-    return current?.name === g.name ? <div className='w-full border rounded'>
+    return current?.name === g.name ? <div className='w-full border rounded dark:border-zinc-800'>
         <ReactQuill className='w-full'
                     theme="bubble" value={description} onChange={e => setDescription(e)}
                     onBlur={handleDescriptionBlur}/>
-    </div> : <div className='w-full border rounded h-[46px]'>{description}</div>
+    </div> : <div className='w-full border rounded dark:border-zinc-800 h-[46px]'>{description}</div>
 
 }
