@@ -13,13 +13,10 @@ function App() {
                     <Route path={':projectName'} element={<Project/>}>
                         <Route path={':goalName'} element={<Goal/>}/>
                     </Route>
-
                     <Route path="*" element={<h1>Page not found</h1>}/>
                 </Route>
             </Routes>
         </BrowserRouter>
-
-
     )
 }
 

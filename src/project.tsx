@@ -82,7 +82,7 @@ type InputProps = {
 const GoalName: FC<InputProps> = ({goal}) => {
     const {project, update} = useCurrentProject();
     const {goal: current} = useGoal();
-    const createName = () => `Goal ${project?.goals?.length + 1}`
+    const createName = () => `Goal ${Number(project?.goals?.length) + 1}`
 
     const [goalName, setGoalName] = React.useState<string>(goal?.name);
     const navigation = useNavigate();
@@ -94,10 +94,10 @@ const GoalName: FC<InputProps> = ({goal}) => {
     const handleNameBlur = (g: Goal) => {
         const name = goalName.trim() ? goalName.trim() : createName()
         if (!project) return
-        const isNameExist = project.goals.some(p => p.name === name)
+        const isNameExist = project?.goals?.some(p => p.name === name)
         const isDifferent = name !== g.name
         const finalName = isNameExist && isDifferent ? `${name} (${project.goals.length + 1})` : name
-        update.goals(project.goals.map(w => w.name === g.name ? {...w, name: finalName} : w))
+        update?.goals(project.goals.map(w => w.name === g.name ? {...w, name: finalName} : w))
         navigation(`/${encodeURI(project.name)}/${encodeURI(finalName)}`, {replace: true})
     }
 

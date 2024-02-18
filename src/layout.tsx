@@ -61,7 +61,7 @@ const Layout: FC = () => {
 
             <button onClick={() => {
                 if (window.confirm('Are you sure you want to remove this project')) {
-                    remove.project(project?.name)
+                    project?.name && remove.project(project.name)
                 }
 
             }}
@@ -79,7 +79,7 @@ const Layout: FC = () => {
 
             <button onClick={() => {
                 if (window.confirm('Are you sure you want to remove this objective')) {
-                    remove.goal(goal?.name)
+                    goal?.name && remove.goal(goal.name)
                 }
             }}
                     className='text-orange-400 text-sm border-2 border-orange-400 rounded-full px-2 py-1 hover:bg-orange-400 hover:text-white'>
@@ -94,7 +94,7 @@ const Layout: FC = () => {
                 Delete All Goals
             </button>
             <button
-                onClick={() => create.goal(new DemoGoal(`Goal (${project?.goals?.length + 1})`))}
+                onClick={() => create.goal(new DemoGoal(`Goal (${Number(project?.goals?.length) + 1})`))}
                 className='text-blue-400 text-sm border-2 border-blue-400 rounded-full px-2 py-1 hover:bg-blue-400 hover:text-white text-nowrap'>
                 Add Goal
             </button>
