@@ -75,7 +75,7 @@ const Layout: FC = () => {
             </button>
 
             <button onClick={() => {
-                if (window.confirm('Are you sure you want to remove this objective')) {
+                if (window.confirm('Are you sure you want to remove this goal')) {
                     goal?.name && remove.goal(goal.name)
                 }
             }}
@@ -83,7 +83,7 @@ const Layout: FC = () => {
                 Delete Goal
             </button>
             <button onClick={() => {
-                if (window.confirm('Are you sure you want to clear all objectives?')) {
+                if (window.confirm('Are you sure you want to clear all goals?')) {
                     update.goals([])
                 }
             }}
