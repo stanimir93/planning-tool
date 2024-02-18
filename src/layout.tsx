@@ -75,7 +75,7 @@ const Layout: FC = () => {
             </button>
 
             <button onClick={() => {
-                if (window.confirm('Are you sure you want to remove this goal')) {
+                if (window.confirm('Are you sure you want to remove this goal?')) {
                     goal?.name && remove.goal(goal.name)
                 }
             }}
@@ -92,7 +92,7 @@ const Layout: FC = () => {
             </button>
 
             <button onClick={() => {
-                if (window.confirm('Are you sure you want to remove this project')) {
+                if (window.confirm('Are you sure you want to remove this project?')) {
                     project?.name && remove.project(project.name)
                 }
 

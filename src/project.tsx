@@ -30,6 +30,10 @@ const Project: FC = () => {
         return goalName === goal?.name
     }
 
+    useEffect(() => {
+        setMainObjective(project?.main_objectives || '')
+    }, [goal?.name]);
+
     if (!project) return null;
 
     return (<>
