@@ -1,11 +1,11 @@
 import {Outlet, useNavigate} from "react-router-dom";
 import React, {FC, useEffect} from "react";
-import useProjects from "./hooks/useProjects.ts";
+import useProjects from "../hooks/useProjects.ts";
 import cn from "classnames";
-import useProject from "./hooks/useCurrentProject.ts";
+import useProject from "../hooks/useCurrentProject.ts";
 import {FiPlus} from "react-icons/fi";
-import {DemoGoal, DemoProject, IProject} from "./definitions.ts";
-import useGoal from "./hooks/useGoal.ts";
+import {DemoGoal, DemoProject, IProject} from "../utils/definitions.ts";
+import useGoal from "../hooks/useGoal.ts";
 import Card from "./card.tsx";
 import {useLocalStorage} from "@uidotdev/usehooks";
 
@@ -67,7 +67,8 @@ const Layout: FC = () => {
         <main className='flex flex-col items-stretch gap-5 max-w-5xl mx-auto px-4 py-5 min-h-screen'>
             <Outlet/>
         </main>
-        <footer className='flex gap-4 items-stretch mx-auto justify-center pb-4 flex-col sm:flex-row max-w-48 sm:max-w-full dark:opacity-80'>
+        <footer
+            className='flex gap-4 items-stretch mx-auto justify-center pb-4 flex-col sm:flex-row max-w-48 sm:max-w-full dark:opacity-80'>
             <button
                 onClick={() => create.goal(new DemoGoal(`Goal (${Number(project?.goals?.length) + 1})`))}
                 className='text-blue-400 text-sm border-2 border-blue-400 rounded-full px-2 py-1 hover:bg-blue-400 hover:text-white text-nowrap'>
@@ -111,7 +112,8 @@ const Layout: FC = () => {
             {/* dark mode /*/}
             <button onClick={() => setDarkMode(!darkMode)}
                     className='text-indigo-500 text-sm border-2 border-indigo-500 rounded-full px-2 py-1 hover:bg-indigo-500 hover:text-white text-nowrap'
-            >{darkMode ? 'Light' : 'Dark'} Mode</button>
+            >{darkMode ? 'Light' : 'Dark'} Mode
+            </button>
         </footer>
     </div>
 }

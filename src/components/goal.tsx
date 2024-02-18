@@ -1,9 +1,10 @@
 import {FC, useEffect, useId, useState} from "react";
-import useGoal from "./hooks/useGoal.ts";
+import useGoal from "../hooks/useGoal.ts";
 import Card from "./card.tsx";
 import cn from "classnames";
-import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.bubble.css';
+import QuillComponent from "./quill.tsx";
+import quillModule from "../utils/quill-modules.ts";
 
 
 const Goal: FC = () => {
@@ -28,11 +29,9 @@ const Goal: FC = () => {
             <Card className='flex flex-col items-start gap-4 border'>
                 <label className='flex gap-2 items-center pl-2 text-lg font-semibold'>What tasks I need to
                     do?</label>
-                <div className='w-full border rounded dark:border-zinc-800'>
-                    <ReactQuill className='w-full taller'
-                                theme="bubble" value={actionableTasks} onChange={e => setActionableTasks(e)}
+                <QuillComponent value={actionableTasks} onChange={setActionableTasks} quillClassName={'taller'}
+                                module={quillModule}
                                 onBlur={() => update.tasks(actionableTasks)}/>
-                </div>
             </Card>
             <Card className='flex flex-col items-stretch gap-4 border'>
                 <p className='flex gap-2 items-center pl-2 text-lg font-semibold'>
@@ -40,11 +39,9 @@ const Goal: FC = () => {
 
 
                 <div className='mb-4'>
-                    <div className='w-full border rounded dark:border-zinc-800'>
-                        <ReactQuill className='w-full taller'
-                                    theme="bubble" value={saveTimeNote} onChange={e => setSaveTimeNote(e)}
+                    <QuillComponent value={saveTimeNote} onChange={setSaveTimeNote} quillClassName={'taller'}
+                                    module={quillModule}
                                     onBlur={() => update.save_time_note(saveTimeNote)}/>
-                    </div>
                 </div>
 
                 <p className='flex gap-2 items-center'>

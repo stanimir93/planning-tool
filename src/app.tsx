@@ -1,7 +1,7 @@
 import {HashRouter, Route, Routes} from "react-router-dom";
-import Layout from "./layout.tsx";
-import Project from "./project.tsx";
-import Goal from "./goal.tsx";
+import Layout from "./components/layout.tsx";
+import Project from "./components/project.tsx";
+import Goal from "./components/goal.tsx";
 
 
 function App() {

@@ -1,6 +1,6 @@
 import {useParams} from "react-router-dom";
 import {useLocalStorage} from "@uidotdev/usehooks";
-import {Goal, IProject} from "../definitions.ts";
+import {Goal, IProject} from "../utils/definitions.ts";
 
 const useCurrentProject = () => {
     const {projectName: temp} = useParams();

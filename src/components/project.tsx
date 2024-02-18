@@ -1,20 +1,20 @@
-import React, {FC, useEffect} from "react";
-import useCurrentProject from "./hooks/useCurrentProject.ts";
+import {FC, useEffect, useState} from "react";
+import useCurrentProject from "../hooks/useCurrentProject.ts";
 import {Outlet, useNavigate} from "react-router-dom";
 import cn from "classnames";
-import {DemoGoal, Goal, IProject} from "./definitions.ts";
+import {DemoGoal, Goal, IProject} from "../utils/definitions.ts";
 import Card from "./card.tsx";
-import useGoal from "./hooks/useGoal.ts";
+import useGoal from "../hooks/useGoal.ts";
 import {FiCheck} from "react-icons/fi";
-import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.bubble.css';
+import QuillComponent from "./quill.tsx";
 
 
 const Project: FC = () => {
     const {project, create, update} = useCurrentProject();
     const {goal} = useGoal();
     const navigation = useNavigate();
-    const [mainObjective, setMainObjective] = React.useState<string>(project?.main_objectives || '');
+    const [mainObjective, setMainObjective] = useState<string>(project?.main_objectives || '');
 
     useEffect(() => {
         if (!project) return
@@ -39,14 +39,9 @@ const Project: FC = () => {
     return (<>
             <Card className='flex flex-col items-start gap-1'>
                 <div className='w-full'>
-                    <p className='block pl-2 mb-4 text-lg font-semibold'>
-
-                        Main objectives?</p>
-                    <div className='w-full border rounded dark:border-zinc-800'>
-                        <ReactQuill className='w-full'
-                                    theme="bubble" value={mainObjective} onChange={e => setMainObjective(e)}
+                    <p className='block pl-2 mb-4 text-lg font-semibold'>Main objectives?</p>
+                    <QuillComponent value={mainObjective} onChange={setMainObjective}
                                     onBlur={() => update.main_objective(mainObjective)}/>
-                    </div>
                 </div>
             </Card>
             <nav className='flex items-center gap-5 overflow-visible w-full overflow-x-auto max-w-full'>
@@ -90,7 +85,7 @@ const GoalName: FC<InputProps> = ({goal}) => {
     const {goal: current} = useGoal();
     const createName = () => `Goal ${Number(project?.goals?.length) + 1}`
 
-    const [goalName, setGoalName] = React.useState<string>(goal?.name);
+    const [goalName, setGoalName] = useState<string>(goal?.name);
     const navigation = useNavigate();
 
     useEffect(() => {
@@ -128,7 +123,7 @@ type DescriptionInputProps = {
 
 const Description: FC<DescriptionInputProps> = ({g, p}) => {
     const {update, goal: current} = useGoal();
-    const [description, setDescription] = React.useState<string>(g?.description || '');
+    const [description, setDescription] = useState<string>(g?.description || '');
 
     const handleDescriptionBlur = () => {
         update.description(description)
@@ -138,12 +133,8 @@ const Description: FC<DescriptionInputProps> = ({g, p}) => {
         setDescription(g?.description || '')
     }, [g?.name, p.name]);
 
-    return  <div className='w-full border rounded dark:border-zinc-800'>
-        <ReactQuill className={cn('w-full', {
-            'cursor-default': g.name !== current?.name
-        })}
-                    theme="bubble" value={description} onChange={e => setDescription(e)}
-                    onBlur={handleDescriptionBlur}/>
-    </div>
+
+    return <QuillComponent value={description} onChange={setDescription} onBlur={handleDescriptionBlur}
+                           quillClassName={g.name !== current?.name ? 'cursor-default' : ''}/>
 
 }
