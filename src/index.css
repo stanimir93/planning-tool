@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    background-color: white;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    display: inline-block;
+    height: 1.4rem;
+    position: relative;
+    vertical-align: middle;
+    width: 1.4rem;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #bbf7d0;
+}
+
+input[type="checkbox"]::before {
+    content: "";
+    display: block;
+    height: 0.4rem;
+    left: 0.29rem;
+    position: absolute;
+    top: 0.34rem;
+    width: 0.63rem;
+    border: 1px solid;
+    border-top: none;
+    border-right: none;
+    transform: rotate(-45deg);
+    opacity: 0;
+}
+
+input[type="checkbox"]:checked::before {
+    opacity: 1;
+}
+
+/* No outline on input focus */
+*:focus {
+    outline: none;
+}
+
+.ql-bubble .ql-tooltip {
+    z-index: 100 !important;
+}
+
+.taller .ql-editor {
+    min-height: 80px !important;
+}
+
+.ql-editor h1 {
+    font-size: 1.6em !important;
+}
+
+.ql-editor h2 {
+    font-size: 1.3em !important;
+}
+
+.ql-editor {
+    font-size: 1rem !important;
+    /*background-color: rgba(255, 255, 255, 1);*/
+}
