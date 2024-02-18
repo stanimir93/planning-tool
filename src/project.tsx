@@ -32,7 +32,7 @@ const Project: FC = () => {
 
     useEffect(() => {
         setMainObjective(project?.main_objectives || '')
-    }, [goal?.name]);
+    }, [project?.name]);
 
     if (!project) return null;
 
