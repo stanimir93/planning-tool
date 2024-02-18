@@ -142,6 +142,6 @@ const Description: FC<DescriptionInputProps> = ({g, p}) => {
         <ReactQuill className='w-full'
                     theme="bubble" value={description} onChange={e => setDescription(e)}
                     onBlur={handleDescriptionBlur}/>
-    </div> : <div className='w-full border d-flex flex-col items-stretch rounded dark:border-zinc-800 h-[46px]' dangerouslySetInnerHTML={{__html: g.description}}/>
+    </div> : <div className='p-2 w-full border d-flex flex-col items-stretch rounded dark:border-zinc-800 h-[46px]' dangerouslySetInnerHTML={{__html: g.description}}/>
 
 }
